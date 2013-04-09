@@ -32,6 +32,7 @@
 package org.sola.services.ejb.party.repository.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -99,6 +100,10 @@ public class Party extends AbstractVersionedEntity {
     private List<PartyRole> roleList;
     @Column(name = "party.is_rightholder(id) AS is_rightholder", insertable=false, updatable=false)
     private boolean rightHolder;
+    
+    //modified by wandechris
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
     
     public Party() {
         super();
@@ -268,4 +273,15 @@ public class Party extends AbstractVersionedEntity {
     public void setRightHolder(boolean rightHolder) {
         this.rightHolder = rightHolder;
     }
+    
+    //modified by Friday
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    
 }
