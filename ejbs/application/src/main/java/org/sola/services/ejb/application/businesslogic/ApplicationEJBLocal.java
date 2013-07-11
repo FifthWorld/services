@@ -271,5 +271,17 @@ public interface ApplicationEJBLocal extends AbstractEJBLocal {
      * CadastreEJB.SysRegPubDisParcelName}.
      */
     List<SysRegCertificates> getSysRegCertificatesByApplication(String searchString, String nr);
+    
+     /**
+     * See {@linkplain ApplicationEJB#getCapacityTypes(java.lang.String)
+     * ApplicationEJB.getCapacityTypes}.
+     */
+    List<CapacityType> getCapacityTypes(String languageCode);
+    
+     /**
+     * See {@linkplain ApplicationEJB#getDevelopmentStageTypes(java.lang.String)
+     * ApplicationEJB.getDevelopmentStageTypes}.
+     */
+    List<DevelopmentStageType> getDevelopmentStageTypes(String languageCode);
 
 }

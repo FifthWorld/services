@@ -37,7 +37,11 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.sola.services.common.repository.ChildEntity;
+import org.sola.services.common.repository.ExternalEJB;
 import org.sola.services.common.repository.entities.AbstractVersionedEntity;
+import org.sola.services.ejb.address.businesslogic.AddressEJBLocal;
+import org.sola.services.ejb.address.repository.entities.Address;
 
 /**
  * Entity representing the application.application_property table.
@@ -68,6 +72,22 @@ public class ApplicationProperty extends AbstractVersionedEntity {
     private String baUnitId;
     @Column(name = "land_use_code")
     private String landUseCode;
+    
+    //new additions by wandechris
+    @Column(name = "development_stage")
+    private String developmentStage;
+    @Column(name = "capacity_in_which_property_is_owned")
+    private String capacityType;
+    @Column(name = "location_of_property")
+    private String propertyLocation;
+    @Column(name = "property_duration")
+    private String propertyDuration;
+    
+    @ExternalEJB(ejbLocalClass = AddressEJBLocal.class,
+    loadMethod = "getAddress", saveMethod = "saveAddress")
+    @ChildEntity(childIdField = "addressId")
+    private Address address;
+    //
 
     public ApplicationProperty() {
         super();
@@ -153,4 +173,49 @@ public class ApplicationProperty extends AbstractVersionedEntity {
     public void setVerifiedLocation(boolean verifiedLocation) {
         this.verifiedLocation = verifiedLocation;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+        if (address != null) {
+            this.setPropertyLocation(address.getId());
+        }
+    }
+
+    public String getCapacityType() {
+        return capacityType;
+    }
+
+    public void setCapacityType(String capacityType) {
+        this.capacityType = capacityType;
+    }
+
+    public String getDevelopmentStage() {
+        return developmentStage;
+    }
+
+    public void setDevelopmentStage(String developmentStage) {
+        this.developmentStage = developmentStage;
+    }
+
+    public String getPropertyDuration() {
+        return propertyDuration;
+    }
+
+    public void setPropertyDuration(String propertyDuration) {
+        this.propertyDuration = propertyDuration;
+    }
+
+    public String getPropertyLocation() {
+        return propertyLocation;
+    }
+
+    public void setPropertyLocation(String propertyLocation) {
+        this.propertyLocation = propertyLocation;
+    }
+    
+    
 }

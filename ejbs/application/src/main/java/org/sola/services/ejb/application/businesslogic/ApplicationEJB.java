@@ -1278,4 +1278,26 @@ public class ApplicationEJB extends AbstractEJB implements ApplicationEJBLocal {
     }
 
     
+    /**
+     * Retrieves all application.capacity_type code values.
+     *
+     * @param languageCode The language code to use for localization of display
+     * values.
+     */
+    @Override
+    public List<CapacityType> getCapacityTypes(String languageCode) {
+        return getRepository().getCodeList(CapacityType.class, languageCode);
+    }
+    
+     /**
+     * Retrieves all application.development_stage_type code values.
+     *
+     * @param languageCode The language code to use for localization of display
+     * values.
+     */
+    @Override
+    public List<DevelopmentStageType> getDevelopmentStageTypes(String languageCode) {
+        return getRepository().getCodeList(DevelopmentStageType.class, languageCode);
+    }
+    
 }
