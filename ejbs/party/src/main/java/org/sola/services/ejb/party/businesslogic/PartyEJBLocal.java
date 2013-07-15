@@ -89,4 +89,16 @@ public interface PartyEJBLocal extends AbstractEJBLocal {
      * PartyEJB.getAgents}.
      */
     List<Party> getAgents();
+    
+     /**
+     * See {@linkplain PartyEJB#getStateTypes(java.lang.String)
+     * PartyEJB.getStateTypes}.
+     */
+    List<StateType> getStateTypes(String languageCode);
+    
+     /**
+     * See {@linkplain PartyEJB#getLgaTypes(java.lang.String)
+     * PartyEJB.getLgaTypes}.
+     */
+    List<LgaType> getLgaTypes(String languageCode);
 }

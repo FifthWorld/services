@@ -96,6 +96,8 @@ public class Party extends AbstractVersionedEntity {
     loadMethod = "getAddress", saveMethod = "saveAddress")
     @ChildEntity(childIdField = "addressId")
     private Address address;
+    private Address present_home_address;
+    private Address employers_address;
     @ChildEntityList(parentIdField = "partyId")
     private List<PartyRole> roleList;
     @Column(name = "party.is_rightholder(id) AS is_rightholder", insertable=false, updatable=false)
@@ -104,6 +106,25 @@ public class Party extends AbstractVersionedEntity {
     //modified by wandechris
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
+    
+    
+     //Newly addred columns start below update by friday
+    @Column(name = "state_of_origin")
+    private String state_of_origin;
+    @Column(name = "home_town")
+    private String home_town;
+    @Column(name = "lga_code")
+    private String lga_code;
+    @Column(name = "present_home_address_id")
+    private String present_home_address_id;   
+    @Column(name = "corporate_name")
+    private String corporate_name;
+    @Column(name = "occupation")
+    private String occupation;
+    @Column(name = "employer_name")
+    private String employer_name;
+    @Column(name = "employer_address_id")
+    private String employer_address_id;
     
     public Party() {
         super();
@@ -283,5 +304,94 @@ public class Party extends AbstractVersionedEntity {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+    
+    //added by wandechris
+
+    public String getCorporate_name() {
+        return corporate_name;
+    }
+
+    public void setCorporate_name(String corporate_name) {
+        this.corporate_name = corporate_name;
+    }
+
+    public String getEmployer_address_id() {
+        return employer_address_id;
+    }
+
+    public void setEmployer_address_id(String employer_address_id) {
+        this.employer_address_id = employer_address_id;
+    }
+
+    public String getEmployer_name() {
+        return employer_name;
+    }
+
+    public void setEmployer_name(String employer_name) {
+        this.employer_name = employer_name;
+    }
+
+    public Address getEmployers_address() {
+        return employers_address;
+    }
+
+    public void setEmployers_address(Address employers_address) {
+        this.employers_address = employers_address;
+        if (employers_address != null) {
+            this.setEmployer_address_id(employers_address.getId());
+        }
+    }
+
+    public String getHome_town() {
+        return home_town;
+    }
+
+    public void setHome_town(String home_town) {
+        this.home_town = home_town;
+    }
+
+    public String getLga_code() {
+        return lga_code;
+    }
+
+    public void setLga_code(String lga_code) {
+        this.lga_code = lga_code;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public Address getPresent_home_address() {
+        return present_home_address;
+    }
+
+    public void setPresent_home_address(Address present_home_address) {
+        this.present_home_address = present_home_address;
+        if (present_home_address != null) {
+            this.setPresent_home_address_id(present_home_address.getId());
+        }
+    }
+
+    public String getPresent_home_address_id() {
+        return present_home_address_id;
+    }
+
+    public void setPresent_home_address_id(String present_home_address_id) {
+        this.present_home_address_id = present_home_address_id;
+    }
+
+    public String getState_of_origin() {
+        return state_of_origin;
+    }
+
+    public void setState_of_origin(String state_of_origin) {
+        this.state_of_origin = state_of_origin;
+    }
+    
     
 }

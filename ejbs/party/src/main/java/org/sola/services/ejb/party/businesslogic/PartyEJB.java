@@ -171,4 +171,24 @@ public class PartyEJB extends AbstractEJB implements PartyEJBLocal {
     public List<PartyRoleType> getPartyRoles(String languageCode) {
         return getRepository().getCodeList(PartyRoleType.class, languageCode);
     }
+    
+     /**
+     * Retrieves all party.state_type code values.
+     *
+     * @param languageCode The language code to use for localization of display values.
+     */
+    @Override
+    public List<StateType> getStateTypes(String languageCode) {
+        return getRepository().getCodeList(StateType.class, languageCode);
+    }
+    
+     /**
+     * Retrieves all party.lgaType_type code values.
+     *
+     * @param languageCode The language code to use for localization of display values.
+     */
+    @Override
+    public List<LgaType> getLgaTypes(String languageCode) {
+        return getRepository().getCodeList(LgaType.class, languageCode);
+    }
 }
