@@ -75,9 +75,9 @@ public class ApplicationProperty extends AbstractVersionedEntity {
     
     //new additions by wandechris
     @Column(name = "development_stage")
-    private String developmentStage;
+    private String developmentStageCode;
     @Column(name = "capacity_in_which_property_is_owned")
-    private String capacityType;
+    private String capacityTypeCode;
     @Column(name = "location_of_property")
     private String propertyLocation;
     @Column(name = "property_duration")
@@ -185,20 +185,20 @@ public class ApplicationProperty extends AbstractVersionedEntity {
         }
     }
 
-    public String getCapacityType() {
-        return capacityType;
+    public String getCapacityTypeCode() {
+        return capacityTypeCode;
     }
 
-    public void setCapacityType(String capacityType) {
-        this.capacityType = capacityType;
+    public void setCapacityTypeCode(String capacityTypeCode) {
+        this.capacityTypeCode = capacityTypeCode;
     }
 
-    public String getDevelopmentStage() {
-        return developmentStage;
+    public String getDevelopmentStageCode() {
+        return developmentStageCode;
     }
 
-    public void setDevelopmentStage(String developmentStage) {
-        this.developmentStage = developmentStage;
+    public void setDevelopmentStageCode(String developmentStageCode) {
+        this.developmentStageCode = developmentStageCode;
     }
 
     public String getPropertyDuration() {
