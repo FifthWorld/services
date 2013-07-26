@@ -77,7 +77,7 @@ public class ApplicationProperty extends AbstractVersionedEntity {
     @Column(name = "development_stage")
     private String developmentStageCode;
     @Column(name = "capacity_in_which_property_is_owned")
-    private String capacityTypeCode;
+    private String capacityCode;
     @Column(name = "location_of_property")
     private String propertyLocation;
     @Column(name = "property_duration")
@@ -85,7 +85,7 @@ public class ApplicationProperty extends AbstractVersionedEntity {
     
     @ExternalEJB(ejbLocalClass = AddressEJBLocal.class,
     loadMethod = "getAddress", saveMethod = "saveAddress")
-    @ChildEntity(childIdField = "addressId")
+    @ChildEntity(childIdField = "propertyLocation")
     private Address address;
     //
 
@@ -185,12 +185,12 @@ public class ApplicationProperty extends AbstractVersionedEntity {
         }
     }
 
-    public String getCapacityTypeCode() {
-        return capacityTypeCode;
+    public String getCapacityCode() {
+        return capacityCode;
     }
 
-    public void setCapacityTypeCode(String capacityTypeCode) {
-        this.capacityTypeCode = capacityTypeCode;
+    public void setCapacityCode(String capacityCode) {
+        this.capacityCode = capacityCode;
     }
 
     public String getDevelopmentStageCode() {
