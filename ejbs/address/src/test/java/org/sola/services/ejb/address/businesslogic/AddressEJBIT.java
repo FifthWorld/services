@@ -68,7 +68,6 @@ public class AddressEJBIT extends AbstractEJBTest {
      * Performs CRUD tests for the Address EJB
      */
     @Test
-    @Ignore
     public void testSaveAddress() throws Exception {
 
         System.out.println("testSaveAddress");
@@ -139,6 +138,7 @@ public class AddressEJBIT extends AbstractEJBTest {
     }
 
     @Test
+    @Ignore
     public void testGetAddresses() throws Exception {
 
         System.out.println("testGetAddress");

@@ -48,6 +48,7 @@ import org.sola.services.ejb.administrative.businesslogic.AdministrativeEJBLocal
 import org.sola.services.ejb.cadastre.repository.entities.CadastreObject;
 import static org.junit.Assert.*;
 import org.sola.services.common.test.AbstractEJBTest;
+import org.sola.services.ejb.address.repository.entities.Address;
 import org.sola.services.ejb.administrative.repository.entities.BaUnit;
 import org.sola.services.ejb.administrative.repository.entities.BaUnitNotation;
 import org.sola.services.ejb.administrative.repository.entities.Rrr;
@@ -68,8 +69,8 @@ import org.sola.services.ejb.source.repository.entities.Source;
  */
 public class Development extends AbstractEJBTest{
 
-    private static String PARTY_MODULE_NAME = "sola-party-1_0-SNAPSHOT";
-    private static String ADMINISTRATIVE_MODULE_NAME = "sola-administrative-1_0-SNAPSHOT";
+    private static String PARTY_MODULE_NAME = "sola-party-1_2-SNAPSHOT";
+    private static String ADMINISTRATIVE_MODULE_NAME = "sola-administrative-1_2-SNAPSHOT";
 
     public Development() {
         super();
@@ -167,6 +168,14 @@ public class Development extends AbstractEJBTest{
         ApplicationProperty applicationProperty2 = new ApplicationProperty();
         applicationProperty2.setNameFirstpart("first_part2");
         applicationProperty2.setNameLastpart("last_part2");
+        
+        //Create an address and add to application property
+        Address address2=new Address();
+        address2.setChangeUser("sam");
+        address2.setDescription("Test address");
+        address2.setExtAddressId("");
+        
+        applicationProperty2.setAddress(address2);
 
         List<ApplicationProperty> props = new ArrayList<ApplicationProperty>();
         props.add(applicationProperty1);
