@@ -96,23 +96,30 @@ public class Party extends AbstractVersionedEntity {
     loadMethod = "getAddress", saveMethod = "saveAddress")
     @ChildEntity(childIdField = "addressId")
     private Address address;
-    private Address present_home_address;
-    private Address employers_address;
     @ChildEntityList(parentIdField = "partyId")
     private List<PartyRole> roleList;
     @Column(name = "party.is_rightholder(id) AS is_rightholder", insertable=false, updatable=false)
     private boolean rightHolder;
     
+    @ExternalEJB(ejbLocalClass = AddressEJBLocal.class,
+    loadMethod = "getAddress", saveMethod = "saveAddress")
+    @ChildEntity(childIdField = "employer_address_id")
+    private Address employerAddress;
+
     //modified by wandechris
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
     
+     @ExternalEJB(ejbLocalClass = AddressEJBLocal.class,
+    loadMethod = "getAddress", saveMethod = "saveAddress")
+    @ChildEntity(childIdField = "present_home_address_id")
+     private Address presentAddress;
     
      //Newly addred columns start below update by friday
     @Column(name = "state_of_origin")
-    private String state_of_origin;
+    private String state_code;
     @Column(name = "home_town")
-    private String home_town;
+    private String homeTown;
     @Column(name = "lga_code")
     private String lga_code;
     @Column(name = "present_home_address_id")
@@ -122,7 +129,7 @@ public class Party extends AbstractVersionedEntity {
     @Column(name = "occupation")
     private String occupation;
     @Column(name = "employer_name")
-    private String employer_name;
+    private String employerName;
     @Column(name = "employer_address_id")
     private String employer_address_id;
     
@@ -323,31 +330,31 @@ public class Party extends AbstractVersionedEntity {
         this.employer_address_id = employer_address_id;
     }
 
-    public String getEmployer_name() {
-        return employer_name;
+    public String getEmployerName() {
+        return employerName;
     }
 
-    public void setEmployer_name(String employer_name) {
-        this.employer_name = employer_name;
+    public void setEmployerName(String employerName) {
+        this.employerName = employerName;
     }
 
-    public Address getEmployers_address() {
-        return employers_address;
+    public Address getEmployerAddress() {
+        return employerAddress;
     }
 
-    public void setEmployers_address(Address employers_address) {
-        this.employers_address = employers_address;
-        if (employers_address != null) {
-            this.setEmployer_address_id(employers_address.getId());
+    public void setEmployerAddress(Address employerAddress) {
+        this.employerAddress = employerAddress;
+        if (employerAddress != null) {
+            this.setEmployer_address_id(employerAddress.getId());
         }
     }
 
-    public String getHome_town() {
-        return home_town;
+    public String getHomeTown() {
+        return homeTown;
     }
 
-    public void setHome_town(String home_town) {
-        this.home_town = home_town;
+    public void setHomeTown(String homeTown) {
+        this.homeTown = homeTown;
     }
 
     public String getLga_code() {
@@ -366,14 +373,14 @@ public class Party extends AbstractVersionedEntity {
         this.occupation = occupation;
     }
 
-    public Address getPresent_home_address() {
-        return present_home_address;
+    public Address getPresentAddress() {
+        return presentAddress;
     }
 
-    public void setPresent_home_address(Address present_home_address) {
-        this.present_home_address = present_home_address;
-        if (present_home_address != null) {
-            this.setPresent_home_address_id(present_home_address.getId());
+    public void setPresentAddress(Address presentAddress) {
+        this.presentAddress = presentAddress;
+        if (presentAddress != null) {
+            this.setPresent_home_address_id(presentAddress.getId());
         }
     }
 
@@ -385,12 +392,12 @@ public class Party extends AbstractVersionedEntity {
         this.present_home_address_id = present_home_address_id;
     }
 
-    public String getState_of_origin() {
-        return state_of_origin;
+    public String getState_code() {
+        return state_code;
     }
 
-    public void setState_of_origin(String state_of_origin) {
-        this.state_of_origin = state_of_origin;
+    public void setState_code(String state_code) {
+        this.state_code = state_code;
     }
     
     
