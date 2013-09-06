@@ -115,12 +115,12 @@ public class Party extends AbstractVersionedEntity {
     @ChildEntity(childIdField = "present_home_address_id")
      private Address presentAddress;
     
-     //Newly addred columns start below update by friday
-    @Column(name = "state_of_origin")
+     //Newly added columns start below update by friday
+    @Column(name = "state_code")
     private String state_code;
     @Column(name = "home_town")
     private String homeTown;
-    @Column(name = "lga_code")
+    @Column(name = "lga_id")
     private String lga_code;
     @Column(name = "present_home_address_id")
     private String present_home_address_id;   

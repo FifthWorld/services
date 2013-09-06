@@ -57,9 +57,5 @@ public class StateType extends AbstractCodeEntity {
 
     public void setState_id(String state_id) {
         this.state_id = state_id;
-    }
-
-    
-   
-    
+    }    
 }
